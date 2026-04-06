@@ -1,0 +1,98 @@
+# Retail Customer & Revenue Analysis
+
+An end-to-end data analysis project using the UCI Online Retail II dataset.
+Built as a portfolio project to practise the full analytics stack: data cleaning,
+exploratory analysis, customer segmentation and dashboard delivery — structured
+as if commissioned by an internal Finance team.
+
+---
+
+## Project brief
+
+> _Which customer segments are driving revenue, which products are driving
+> cancellations, and what should the commercial team prioritise next quarter?_
+
+Full brief: [`docs/brief-RET001.md`](docs/brief-RET001.md) _(coming soon)_
+
+---
+
+## Dataset
+
+**UCI Online Retail II** — ~1 million transactions from a UK-based online gift
+retailer, December 2009 to December 2011.
+
+- Source: [archive.ics.uci.edu/dataset/502](https://archive.ics.uci.edu/dataset/502)
+- Downloaded via `kagglehub` — not committed to this repo
+- See `data/` for folder structure; raw data is gitignored
+
+---
+
+## Structure
+
+retail-analysis/
+├── src/ # reusable modules
+│ ├── load.py # data loading and type coercion
+│ ├── clean.py # cleaning logic and decisions
+│ └── analysis/
+│ ├── revenue.py # net revenue after cancellations (Q1)
+│ ├── customers.py # RFM segmentation, cohort retention (Q2, Q3)
+│ ├── products.py # cancellation rates by product (Q4)
+│ └── segments.py # customer segment definitions (Q6)
+├── notebooks/ # analysis notebooks, one per question
+├── tests/ # pytest unit tests for core logic
+├── data/ # gitignored — not committed
+└── requirements.txt
+
+---
+
+## Setup
+
+```bash
+git clone https://github.com/tjturner9/retail-analysis.git
+cd retail-analysis
+
+python -m venv venv
+source venv/bin/activate
+
+pip install -r requirements.txt
+```
+
+You will need a Kaggle account to download the dataset. The `load.py` module
+handles this via `kagglehub` — follow the
+[kagglehub setup instructions](https://github.com/Kaggle/kagglehub) to
+configure your credentials.
+
+---
+
+## Analysis questions
+
+| #   | Question                                     | Module         | Status         |
+| --- | -------------------------------------------- | -------------- | -------------- |
+| Q1  | Net revenue after cancellations              | `revenue.py`   | ✅ Complete    |
+| Q2  | Revenue concentration — top 20% of customers | `customers.py` | 🔄 In progress |
+| Q3  | Customer retention curve                     | `customers.py` | ⬜ Pending     |
+| Q4  | Product cancellation rates                   | `products.py`  | ⬜ Pending     |
+| Q5  | Seasonal patterns and anomalies              | `revenue.py`   | ⬜ Pending     |
+| Q6  | Customer segmentation                        | `segments.py`  | ⬜ Pending     |
+
+---
+
+## Key findings
+
+_To be completed as analysis progresses._
+
+---
+
+## Stack
+
+- **Python** — pandas, numpy, matplotlib, seaborn
+- **Git** — full version history with conventional commits
+- **Power BI / Tableau** — dashboard _(coming in phase 2)_
+- **dbt** — data modelling layer _(planned for months 7–8)_
+
+---
+
+## Status
+
+Work in progress — built over an 11-month period alongside full-time employment
+as part of a deliberate upskilling plan targeting senior analytics roles in the UK.
