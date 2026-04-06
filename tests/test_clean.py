@@ -4,10 +4,6 @@ from src.clean import clean_data
 
 
 @pytest.fixture(scope="module")
-def cleaned_df():
-    df_raw = load_data()
-    return clean_data(df_raw)
-
 
 def test_row_count(cleaned_df):
     """Cleaning should remove ~11k rows, not more."""
