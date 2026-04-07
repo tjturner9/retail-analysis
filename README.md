@@ -47,14 +47,17 @@ retail-analysis/
 
 ## Setup
 
+### Windows
+```powershell
+venv\Scripts\activate
+$env:PYTHONPATH="."
+pytest tests/ -v
+```
+
+### Mac/Linux
 ```bash
-git clone https://github.com/tjturner9/retail-analysis.git
-cd retail-analysis
-
-python -m venv venv
 source venv/bin/activate
-
-pip install -r requirements.txt
+PYTHONPATH=. pytest tests/ -v
 ```
 
 You will need a Kaggle account to download the dataset. The `load.py` module
