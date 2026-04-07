@@ -79,7 +79,12 @@ configure your credentials.
 
 ## Key findings
 
-_To be completed as analysis progresses._
+- **Net revenue: £18.9m** against £19.6m gross — a 7.2% cancellation rate representing
+  ~£670k in lost revenue
+- **Seasonal pattern is pronounced** — November peaks in both years (~2× a typical month),
+  driven by Christmas wholesale orders
+- **Two anomalous cancellation spikes** — January 2011 (13.65%) and December 2011 (28.51%)
+  warrant further investigation
 
 ---
 
