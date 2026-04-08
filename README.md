@@ -29,21 +29,21 @@ retailer, December 2009 to December 2011.
 
 ## Structure
 
-'''
+```
 retail-analysis/
-├── src/ # reusable modules
-│ ├── load.py # data loading and type coercion
-│ ├── clean.py # cleaning logic and decisions
-│ └── analysis/
-│ ├── revenue.py # net revenue after cancellations (Q1)
-│ ├── customers.py # RFM segmentation, cohort retention (Q2, Q3)
-│ ├── products.py # cancellation rates by product (Q4)
-│ └── segments.py # customer segment definitions (Q6)
-├── notebooks/ # analysis notebooks, one per question
-├── tests/ # pytest unit tests for core logic
-├── data/ # gitignored — not committed
+├── src/                # reusable modules
+│   ├── load.py         # data loading and type coercion
+│   ├── clean.py        # cleaning logic and decisions
+│   └── analysis/
+│       ├── revenue.py   # net revenue after cancellations (Q1)
+│       ├── customers.py # RFM segmentation, cohort retention (Q2, Q3)
+│       ├── products.py  # cancellation rates by product (Q4)
+│       └── segments.py  # customer segment definitions (Q6)
+├── notebooks/          # analysis notebooks, one per question
+├── tests/              # pytest unit tests for core logic
+├── data/               # gitignored — not committed
 └── requirements.txt
-'''
+```
 
 ---
 
