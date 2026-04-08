@@ -29,6 +29,7 @@ retailer, December 2009 to December 2011.
 
 ## Structure
 
+'''
 retail-analysis/
 ├── src/ # reusable modules
 │ ├── load.py # data loading and type coercion
@@ -42,12 +43,14 @@ retail-analysis/
 ├── tests/ # pytest unit tests for core logic
 ├── data/ # gitignored — not committed
 └── requirements.txt
+'''
 
 ---
 
 ## Setup
 
 ### Windows
+
 ```powershell
 venv\Scripts\activate
 $env:PYTHONPATH="."
@@ -55,23 +58,25 @@ pytest tests/ -v
 ```
 
 ### Mac/Linux
+
 ```bash
 source venv/bin/activate
 PYTHONPATH=. pytest tests/ -v
 ```
 
 ### Jupyter venv install for failing VScode
+
 ```python
 import subprocess
 import sys
 
 subprocess.run([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'])
 ```
+
 You will need a Kaggle account to download the dataset. The `load.py` module
 handles this via `kagglehub` — follow the
 [kagglehub setup instructions](https://github.com/Kaggle/kagglehub) to
 configure your credentials.
-
 
 ---
 
@@ -103,9 +108,10 @@ configure your credentials.
 
 - The headline cancellation rate of 7.2% overstates the operational problem. Excluding two data entry errors, the true underlying rate is 2.4% — representing approximately £470k in genuine lost revenue against £19.6m gross. This is within normal range for a gift retailer of this type.
 
-- **Revenue is highly concentrated** — the top 20% of customers (1,170 of 5,840) 
-  generate 76.7% of total revenue. Losing a small number of high-value customers 
+- **Revenue is highly concentrated** — the top 20% of customers (1,170 of 5,840)
+  generate 76.7% of total revenue. Losing a small number of high-value customers
   would have a disproportionate impact on the business.
+
 ---
 
 ## Stack
