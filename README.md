@@ -80,8 +80,8 @@ configure your credentials.
 | #   | Question                                     | Module         | Status         |
 | --- | -------------------------------------------- | -------------- | -------------- |
 | Q1  | Net revenue after cancellations              | `revenue.py`   | ✅ Complete    |
-| Q2  | Revenue concentration — top 20% of customers | `customers.py` | 🔄 In progress |
-| Q3  | Customer retention curve                     | `customers.py` | ⬜ Pending     |
+| Q2  | Revenue concentration — top 20% of customers | `customers.py` | ✅ Complete    |
+| Q3  | Customer retention curve                     | `customers.py` | 🔄 In progress |
 | Q4  | Product cancellation rates                   | `products.py`  | ⬜ Pending     |
 | Q5  | Seasonal patterns and anomalies              | `revenue.py`   | ⬜ Pending     |
 | Q6  | Customer segmentation                        | `segments.py`  | ⬜ Pending     |
@@ -103,6 +103,9 @@ configure your credentials.
 
 - The headline cancellation rate of 7.2% overstates the operational problem. Excluding two data entry errors, the true underlying rate is 2.4% — representing approximately £470k in genuine lost revenue against £19.6m gross. This is within normal range for a gift retailer of this type.
 
+- **Revenue is highly concentrated** — the top 20% of customers (1,170 of 5,840) 
+  generate 76.7% of total revenue. Losing a small number of high-value customers 
+  would have a disproportionate impact on the business.
 ---
 
 ## Stack
