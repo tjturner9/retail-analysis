@@ -89,6 +89,12 @@ configure your credentials.
 - **Two anomalous cancellation spikes** — January 2011 (13.65%) and December 2011 (28.51%)
   warrant further investigation
 
+- Revenue peaks sharply in October–November each year, reaching ~2× a typical month, consistent with Christmas wholesale ordering patterns. Forecasting and stock planning should account for this concentration.
+
+- Two cancellation spikes in January 2011 (13.65%) and December 2011 (28.51%) are attributable to single anomalous transactions — likely data entry errors — rather than systemic operational issues. Excluding these two invoices, the underlying cancellation rate is approximately 2–3% and consistent across both years.
+
+- The headline cancellation rate of 7.2% overstates the operational problem. Excluding two data entry errors, the true underlying rate is 2.4% — representing approximately £470k in genuine lost revenue against £19.6m gross. This is within normal range for a gift retailer of this type.
+
 ---
 
 ## Stack
