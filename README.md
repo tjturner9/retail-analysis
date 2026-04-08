@@ -60,10 +60,18 @@ source venv/bin/activate
 PYTHONPATH=. pytest tests/ -v
 ```
 
+### Jupyter venv install for failing VScode
+```python
+import subprocess
+import sys
+
+subprocess.run([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'])
+```
 You will need a Kaggle account to download the dataset. The `load.py` module
 handles this via `kagglehub` — follow the
 [kagglehub setup instructions](https://github.com/Kaggle/kagglehub) to
 configure your credentials.
+
 
 ---
 
