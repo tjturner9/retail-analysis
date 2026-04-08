@@ -28,7 +28,7 @@ def calc_rfm(df: pd.DataFrame) -> pd.DataFrame:
     frequency_df = no_guest_sales.groupby(by=['Customer ID'], as_index=False)['Invoice'].count()
     frequency_df.columns = ['CustomerID', 'Frequency']
 
-    monetary_df = no_guest_df.groupby(by='Customer ID', as_index=False)['TotalPrice'].sum()
+    monetary_df = no_guest_sales.groupby(by='Customer ID', as_index=False)['TotalPrice'].sum()
     monetary_df.columns = ['CustomerID', 'Monetary']
 
     rf_df = df_recency.merge(frequency_df, on='CustomerID')
@@ -54,7 +54,29 @@ def calc_rfm(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def revenue_by_top_n_perc(n_percent, rfm_df: pd.DataFrame, df: pd.DataFrame):
-    top_customers = list(rfm_df[rfm_df['RFM_Score'] >= rfm_df['RFM_Score'].quantile(1 - (n_percent/100))]['CustomerID'])
-    top_customers_df = df[df["Customer ID"].isin(top_customers)]
+    """
+    Inputs
+    -------
+    n_percent: a number for the top %, i.e. I want the revenue for the top 20%, use 20
+    rfm_df: output from the previous function
+    df: output from clean_data
 
-    return top_customers_df['TotalPrice'].sum()
+    Description
+    -------
+    calculating the revenue from the top n percent of customers
+
+    Output
+    -------
+    Dict with keys: top_n_percent, customer_count, top_revenue, total_revenue, revenue_share
+    """
+    n = int(len(rfm_df) * (n_percent / 100))
+    top_customers = rfm_df.nlargest(n, 'Monetary')['CustomerID'].tolist()
+    top_revenue = df[df['Customer ID'].isin(top_customers)]['TotalPrice'].sum()
+    total_revenue = df[df['Customer ID'].notna()]['TotalPrice'].sum()
+    return {
+        'top_n_percent': n_percent,
+        'customer_count': n,
+        'top_revenue': top_revenue,
+        'total_revenue': total_revenue,
+        'revenue_share': top_revenue / total_revenue * 100
+    }
