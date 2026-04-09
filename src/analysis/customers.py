@@ -2,6 +2,7 @@ from src.load import load_data
 from src.clean import clean_data
 import pandas as pd
 
+# Generating the rfm table
 
 def calc_rfm(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -80,3 +81,53 @@ def revenue_by_top_n_perc(n_percent, rfm_df: pd.DataFrame, df: pd.DataFrame):
         'total_revenue': total_revenue,
         'revenue_share': top_revenue / total_revenue * 100
     }
+
+def calc_one_time_buyers(rfm_df: pd.DataFrame) -> dict:
+    """
+    Calculate the proportion of identified customers who purchased exactly once.
+    Note: excludes guest transactions — true one-time buyer rate is higher.
+    """
+    one_time = rfm_df[rfm_df['Frequency'] == 1]
+    return {
+        'one_time_count': len(one_time),
+        'total_customers': len(rfm_df),
+        'one_time_rate': len(one_time) / len(rfm_df) * 100
+    }
+
+# cohort retention analysis
+
+def calc_cohort_period_table(df: pd.DataFrame) -> pd.DataFrame:
+
+    # removing guest and cancelations
+    df = df[df['Customer ID'].notna()]
+    df = df[~df['Invoice'].str.startswith('C', na=False)]
+
+    # calculate cohort per customer
+    cohort_df = df.groupby(by='Customer ID', as_index=False)['InvoiceDate'].min()
+    cohort_df['Cohort'] = cohort_df['InvoiceDate'].dt.to_period('M')
+    cohort_df.drop(columns=['InvoiceDate'], inplace=True)
+
+    # merge cohort number into the df
+    df = pd.merge(df, cohort_df, on='Customer ID', how='left')
+
+    # calculate the period of each transaction
+    df['period'] = (df['InvoiceDate'].dt.to_period('M').astype(int) - df['Cohort'].astype(int))
+
+    # generating the final table
+    cohort_data = df.groupby(['Cohort', 'period'])['Customer ID'].nunique().reset_index()
+    cohort_data.columns = ['Cohort', 'Period', 'Customers']
+    
+    return cohort_data
+
+def generate_retention_matrix(df: pd.DataFrame) -> pd.DataFrame:
+    # initial matrix
+    cohort_matrix = df.pivot_table(index='Cohort', columns='Period', values='Customers')
+    
+    # normalising
+    cohort_size = cohort_matrix[0]
+    retention_matrix = cohort_matrix.divide(cohort_size, axis=0).round(3) * 100
+    
+    # Exclude first cohort (dataset start date artefact) and last (incomplete month)
+    retention_matrix = retention_matrix.iloc[1:-1]
+    
+    return retention_matrix

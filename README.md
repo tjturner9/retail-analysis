@@ -112,6 +112,13 @@ configure your credentials.
   generate 76.7% of total revenue. Losing a small number of high-value customers
   would have a disproportionate impact on the business.
 
+- **Retention stabilises quickly** — average monthly retention sits at ~20% across
+  all periods, suggesting the identified customer base is predominantly repeat
+  wholesale buyers rather than casual consumers.
+- **One-time buyers represent only 1.7% of identified customers** — however this
+  excludes ~235k guest transactions which are likely disproportionately one-time
+  purchasers, meaning the true rate is significantly higher.
+
 ---
 
 ## Stack
